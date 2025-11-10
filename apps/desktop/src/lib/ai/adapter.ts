@@ -23,9 +23,12 @@ export interface ProjectPlanInput {
 }
 
 export interface ProjectPlanSuggestion {
+codex/add-project-management-module-e3ocqt
   title?: string;
   summary: string;
   projectType?: string;
+
+main
   smartGoal: string;
   milestones: Array<{ title: string; dueDate?: string; description?: string }>;
   kanbanColumns: string[];
@@ -77,6 +80,7 @@ export interface AIAdapter {
 function noopAdapter(): AIAdapter {
   const resolver = async <T>(fallback: T): Promise<T> => fallback;
   return {
+codex/add-project-management-module-e3ocqt
     summarize: (text: string) => resolver(`Resumen: ${text.slice(0, 240)}`),
     classifyTransaction: () => resolver(null),
     makeStudyPlan: () => resolver('Plan de estudio base pendiente de IA'),
@@ -135,6 +139,17 @@ ${(input.resources ?? []).join(', ') || 'Por definir'}`
         defaultChecklist: ['Definir objetivo', 'Identificar tareas clave'],
         sampleMilestones: ['Inicio', 'Mitad', 'Entrega']
       }),
+
+    summarize: (text: string) => resolver(text),
+    classifyTransaction: () => resolver(null),
+    makeStudyPlan: () => resolver(''),
+    goalsFromText: () => resolver(''),
+    askDocs: () => resolver(''),
+    initProjectPlan: () => resolver(null),
+    refineProjectPlan: () => resolver(null),
+    weeklyProjectDigest: () => resolver(null),
+    generateProjectTemplate: () => resolver(null),
+main
   };
 }
 
