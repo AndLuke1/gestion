@@ -23,11 +23,17 @@ export interface ProjectPlanInput {
 }
 
 export interface ProjectPlanSuggestion {
+codex/add-project-management-module-qq9oz8
+  title?: string;
+  summary: string;
+  projectType?: string;
+
 codex/add-project-management-module-e3ocqt
   title?: string;
   summary: string;
   projectType?: string;
 
+main
 main
   smartGoal: string;
   milestones: Array<{ title: string; dueDate?: string; description?: string }>;
@@ -80,7 +86,10 @@ export interface AIAdapter {
 function noopAdapter(): AIAdapter {
   const resolver = async <T>(fallback: T): Promise<T> => fallback;
   return {
+codex/add-project-management-module-qq9oz8
+
 codex/add-project-management-module-e3ocqt
+main
     summarize: (text: string) => resolver(`Resumen: ${text.slice(0, 240)}`),
     classifyTransaction: () => resolver(null),
     makeStudyPlan: () => resolver('Plan de estudio base pendiente de IA'),
@@ -139,6 +148,8 @@ ${(input.resources ?? []).join(', ') || 'Por definir'}`
         defaultChecklist: ['Definir objetivo', 'Identificar tareas clave'],
         sampleMilestones: ['Inicio', 'Mitad', 'Entrega']
       }),
+codex/add-project-management-module-qq9oz8
+
 
     summarize: (text: string) => resolver(text),
     classifyTransaction: () => resolver(null),
@@ -149,6 +160,7 @@ ${(input.resources ?? []).join(', ') || 'Por definir'}`
     refineProjectPlan: () => resolver(null),
     weeklyProjectDigest: () => resolver(null),
     generateProjectTemplate: () => resolver(null),
+main
 main
   };
 }

@@ -1,4 +1,7 @@
+codex/add-project-management-module-qq9oz8
+
 codex/add-project-management-module-e3ocqt
+main
 # Módulo de Proyectos
 
 La carpeta ya contiene la primera iteración funcional del módulo Proyectos:
@@ -9,6 +12,8 @@ La carpeta ya contiene la primera iteración funcional del módulo Proyectos:
 - `hooks/useAI.ts` encapsula el adaptador de IA con degradación cuando no hay proveedor.
 
 Próximos pasos: conectar con la base de datos real, añadir drag & drop persistente y sincronizar tareas/hitos con Agenda y Finanzas.
+codex/add-project-management-module-qq9oz8
+
 
 # Projects module scaffold
 
@@ -22,4 +27,5 @@ setup for the GestionVida Projects experience. Planned sub-folders include:
 
 Each screen will follow the design system (Tailwind + shadcn/ui) and integrate
 with the shared layout shell.
+main
 main

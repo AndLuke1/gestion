@@ -1,4 +1,17 @@
+codex/add-project-management-module-qq9oz8
+import type {
+  IDataService,
+  Project,
+  Milestone,
+  Task,
+  ProjectDocument,
+  ProjectTemplate,
+  ProjectFinancialSummary,
+  UUID,
+} from './DataService';
+
 import { IDataService, Project, Milestone, Task, ProjectDocument, ProjectTemplate, ProjectFinancialSummary, UUID } from './DataService';
+main
 
 interface Store {
   projects: Project[];
