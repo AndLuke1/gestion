@@ -2,6 +2,7 @@ import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('electronAPI', {
   openFileDialog: () => ipcRenderer.invoke('dialog:openFile'),
+codex/add-project-management-module-qq9oz8
   toggleTheme: (mode: 'light' | 'dark' | 'system') => ipcRenderer.invoke('theme:toggle', mode),
   data: {
     bootstrap: () => ipcRenderer.invoke('data:bootstrap'),
@@ -24,4 +25,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     createProjectTemplate: (input: unknown) => ipcRenderer.invoke('data:createProjectTemplate', input),
     listProjectTemplates: () => ipcRenderer.invoke('data:listProjectTemplates'),
   }
+
+  toggleTheme: (mode: 'light' | 'dark' | 'system') => ipcRenderer.invoke('theme:toggle', mode)
+main
 });

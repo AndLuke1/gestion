@@ -1,3 +1,4 @@
+codex/add-project-management-module-qq9oz8
 import type {
   Project,
   ProjectDocument,
@@ -33,6 +34,8 @@ type ElectronDataAPI = {
   listProjectTemplates: () => Promise<ProjectTemplate[]>;
 };
 
+
+main
 export {}; // ensure this file is treated as a module
 
 declare global {
@@ -40,7 +43,10 @@ declare global {
     electronAPI?: {
       openFileDialog?: () => Promise<string[]>;
       toggleTheme?: (mode: 'light' | 'dark' | 'system') => Promise<boolean> | boolean;
+codex/add-project-management-module-qq9oz8
       data?: ElectronDataAPI;
+
+main
     };
   }
 }

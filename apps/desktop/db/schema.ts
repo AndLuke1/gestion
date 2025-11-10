@@ -3,7 +3,11 @@
 // Draft Drizzle ORM schema capturing the entities described in the brief.
 // The actual implementation will be refined when hooking up drizzle-kit.
 
+codex/add-project-management-module-qq9oz8
 import { sqliteTable, text, integer, real } from 'drizzle-orm/sqlite-core';
+
+import { sqliteTable, text, integer, real, blob } from 'drizzle-orm/sqlite-core';
+main
 import { sql } from 'drizzle-orm';
 
 export const projects = sqliteTable('projects', {
@@ -79,6 +83,7 @@ export const projectTemplates = sqliteTable('project_templates', {
 
 // Additional tables from the brief would be defined here (accounts, categories,
 // budgets, attachments, etc.). For brevity they are omitted in this skeleton.
+codex/add-project-management-module-qq9oz8
 
 export const schema = {
   projects,
@@ -89,3 +94,5 @@ export const schema = {
   projectDocs,
   projectTemplates,
 };
+
+main

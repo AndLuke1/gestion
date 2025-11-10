@@ -1,8 +1,11 @@
 import { app, BrowserWindow, dialog, ipcMain, nativeTheme } from 'electron';
 import path from 'node:path';
 import fs from 'node:fs';
+codex/add-project-management-module-qq9oz8
 import Database from 'better-sqlite3';
 import { createDataService, type IDataService } from '../src/lib/data/DataService';
+
+main
 
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
 
@@ -14,8 +17,11 @@ function resolveHtmlPath() {
   return `file://${path.join(__dirname, '../dist/index.html')}`;
 }
 
+codex/add-project-management-module-qq9oz8
 let dataService: IDataService | null = null;
 
+
+main
 async function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 1320,
@@ -57,6 +63,7 @@ app.on('activate', () => {
   }
 });
 
+codex/add-project-management-module-qq9oz8
 async function setupDataLayer() {
   const dbPath = path.join(app.getPath('userData'), 'gestionvida.db');
   const db = new Database(dbPath);
@@ -69,6 +76,12 @@ app.whenReady().then(async () => {
     fs.mkdirSync(path.join(app.getPath('userData'), 'backups'), { recursive: true });
   }
   await setupDataLayer();
+
+app.whenReady().then(() => {
+  if (!fs.existsSync(path.join(app.getPath('userData'), 'backups'))) {
+    fs.mkdirSync(path.join(app.getPath('userData'), 'backups'), { recursive: true });
+  }
+main
   void createWindow();
 });
 
@@ -85,6 +98,7 @@ ipcMain.handle('theme:toggle', (_event, value: 'light' | 'dark' | 'system') => {
   }
   return nativeTheme.shouldUseDarkColors;
 });
+codex/add-project-management-module-qq9oz8
 
 function requireDataService(): IDataService {
   if (!dataService) {
@@ -156,3 +170,5 @@ ipcMain.handle('data:createProjectTemplate', async (_event, input) => {
 ipcMain.handle('data:listProjectTemplates', async () => {
   return requireDataService().listProjectTemplates();
 });
+
+main

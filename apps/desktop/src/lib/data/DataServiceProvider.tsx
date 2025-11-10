@@ -1,10 +1,16 @@
+codex/add-project-management-module-qq9oz8
 import { PropsWithChildren, createContext, useContext, useEffect, useMemo } from 'react';
 import type { IDataService, ProjectFilter } from './DataService';
+
+import { PropsWithChildren, createContext, useContext, useMemo } from 'react';
+import { IDataService } from './DataService';
+main
 import { createMockDataService } from './mockData';
 
 const DataServiceContext = createContext<IDataService | null>(null);
 
 export function DataServiceProvider({ children }: PropsWithChildren) {
+codex/add-project-management-module-qq9oz8
   const service = useMemo<IDataService>(() => {
     const bridge = window.electronAPI?.data;
     if (!bridge) {
@@ -33,6 +39,9 @@ export function DataServiceProvider({ children }: PropsWithChildren) {
   useEffect(() => {
     void service.bootstrap?.();
   }, [service]);
+
+  const service = useMemo(() => createMockDataService(), []);
+main
 
   return <DataServiceContext.Provider value={service}>{children}</DataServiceContext.Provider>;
 }

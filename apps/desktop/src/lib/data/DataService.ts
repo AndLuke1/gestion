@@ -5,6 +5,7 @@
 // The implementation outlines the required methods according to the product
 // brief so that subsequent commits can focus on filling in the logic.
 
+codex/add-project-management-module-qq9oz8
 import type Database from 'better-sqlite3';
 import { randomUUID } from 'node:crypto';
 import { drizzle, type BetterSQLite3Database } from 'drizzle-orm/better-sqlite3';
@@ -18,6 +19,9 @@ import {
   projectTemplates as projectTemplatesTable,
   schema,
 } from '../../../db/schema';
+
+import type { Database } from 'better-sqlite3';
+main
 
 // Basic type helpers ---------------------------------------------------------
 export type UUID = string;
@@ -143,6 +147,7 @@ export interface IDataService {
   listProjectTemplates(): Promise<ProjectTemplate[]>;
 }
 
+codex/add-project-management-module-qq9oz8
 type ProjectsRow = typeof projectsTable.$inferSelect;
 type MilestoneRow = typeof milestonesTable.$inferSelect;
 type TaskRow = typeof tasksTable.$inferSelect;
@@ -447,11 +452,68 @@ export class DataService implements IDataService {
       totalExpense,
       balance: totalIncome - totalExpense,
       transactions,
+
+export class DataService implements IDataService {
+  constructor(private readonly db: Database) {}
+
+  async bootstrap(): Promise<void> {
+    // TODO: run migrations using drizzle-kit when wiring in the actual DB layer.
+  }
+
+  async createProject(input: Partial<Project>): Promise<Project> {
+    throw new Error('Not implemented yet');
+  }
+
+  async updateProject(id: UUID, patch: Partial<Project>): Promise<Project> {
+    throw new Error('Not implemented yet');
+  }
+
+  async archiveProject(id: UUID): Promise<void> {
+    throw new Error('Not implemented yet');
+  }
+
+  async listProjects(_filter?: ProjectFilter): Promise<Project[]> {
+    return [];
+  }
+
+  async addMilestone(_projectId: UUID, _input: Partial<Milestone>): Promise<Milestone> {
+    throw new Error('Not implemented yet');
+  }
+
+  async listMilestones(_projectId: UUID): Promise<Milestone[]> {
+    return [];
+  }
+
+  async setMilestoneStatus(_id: UUID, _status: Milestone['status']): Promise<void> {
+    // TODO: update milestone status and emit change events to renderer.
+  }
+
+  async listProjectTasks(_projectId: UUID, _options?: { status?: string[] }): Promise<Task[]> {
+    return [];
+  }
+
+  async moveTask(_taskId: UUID, _destination: { status?: string; columnId?: UUID }): Promise<void> {
+    // TODO: update task lane/column ordering.
+  }
+
+  async linkExpenseToProject(_transactionId: UUID, _projectId: UUID | null): Promise<void> {
+    // TODO: update transaction linkage.
+  }
+
+  async projectFinancials(projectId: UUID): Promise<ProjectFinancialSummary> {
+    return {
+      projectId,
+      totalIncome: 0,
+      totalExpense: 0,
+      balance: 0,
+      transactions: [],
+main
     };
   }
 
   async createProjectDoc(projectId: UUID, input: { title: string; contentMd: string }): Promise<ProjectDocument> {
     const now = new Date().toISOString();
+codex/add-project-management-module-qq9oz8
     const [row] = await this.orm
       .insert(projectDocsTable)
       .values({
@@ -490,6 +552,32 @@ export class DataService implements IDataService {
   async listProjectTemplates(): Promise<ProjectTemplate[]> {
     const rows = await this.orm.select().from(projectTemplatesTable).orderBy(projectTemplatesTable.name);
     return rows.map(mapTemplate);
+
+    return {
+      id: crypto.randomUUID(),
+      projectId,
+      title: input.title,
+      contentMd: input.contentMd,
+      createdAt: now,
+      updatedAt: now,
+    };
+  }
+
+  async listProjectDocs(_projectId: UUID): Promise<ProjectDocument[]> {
+    return [];
+  }
+
+  async createProjectTemplate(input: { name: string; jsonBlueprint: Record<string, unknown> }): Promise<ProjectTemplate> {
+    return {
+      id: crypto.randomUUID(),
+      name: input.name,
+      jsonBlueprint: input.jsonBlueprint,
+    };
+  }
+
+  async listProjectTemplates(): Promise<ProjectTemplate[]> {
+    return [];
+main
   }
 }
 
