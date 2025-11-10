@@ -1,0 +1,32 @@
+{
+  "appId": "com.gestionvida.desktop",
+  "productName": "GestionVida",
+  "directories": {
+    "output": "dist",
+    "buildResources": "electron/resources"
+  },
+  "files": [
+    "dist/**",
+    "dist-electron/**",
+    "package.json"
+  ],
+  "asar": true,
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      }
+    ],
+    "icon": "electron/resources/icon.ico"
+  },
+  "nsis": {
+    "oneClick": true,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": false,
+    "perMachine": false,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "GestionVida"
+  }
+}
